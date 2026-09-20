@@ -273,4 +273,484 @@ footer{padding:36px 0 46px;text-align:center;color:var(--muted);font-size:.92rem
 .toast.on{transform:translate(-50%,0)}
 
 /* ===================== 12. RESPONSIVE ===================== */
-@media(max-width:1020px){.grid{grid-template-columns:repeat(
+@media(max-width:1020px){.grid{grid-template-columns:repeat(2,1fr)}.panel{grid-template-columns:1fr;padding:34px}}
+@media(max-width:720px){
+  nav.links{position:absolute;top:76px;left:0;right:0;background:var(--bg);flex-direction:column;padding:12px 24px 20px;border-bottom:1px solid var(--line);transform:translateY(-12px);opacity:0;pointer-events:none;transition:.35s}
+  nav.links.on{transform:none;opacity:1;pointer-events:auto}
+  .menu-toggle{display:grid}
+  .search.open input{width:130px}
+  .fields{grid-template-columns:1fr}
+}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.sheet{padding:26px 20px}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.stage-cube{animation:none!important}}
+</style>
+</head>
+
+<body>
+
+<!-- ===================== INTRO / WELCOME ANIMATION ===================== -->
+<div id="intro" aria-hidden="true">
+  <div class="intro-inner">
+    <div class="intro-mark"><div class="intro-cube"><i></i><i></i><i></i></div></div>
+    <div class="intro-word" id="introWord"></div>
+    <div class="intro-sub">Fun finds. Real solutions.</div>
+    <div class="intro-bar"><i></i></div>
+  </div>
+</div>
+
+<!-- ===================== ANNOUNCEMENT BAR ===================== -->
+<div class="announce" id="announce"><span id="announceText"></span></div>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><i></i>Productry</a>
+
+    <nav class="links" id="links" aria-label="Main">
+      <a href="#products">All Products</a>
+      <a href="#contact">Contact</a>
+      <a href="#terms">Terms &amp; Services</a>
+    </nav>
+
+    <div class="tools">
+      <div class="search" id="search">
+        <input type="search" id="searchInput" placeholder="Search products" aria-label="Search products">
+        <button class="icon-btn" id="searchBtn" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+      </div>
+      <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a2 2 0 002 1.6h7.7a2 2 0 002-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1"/><circle cx="17" cy="20.5" r="1"/></svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn menu-toggle" id="menuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1><span class="line"><span>Products you want.</span></span><span class="line"><span>Solutions you need.</span></span></h1>
+      <p>From playful everyday finds to practical problem-solvers, Productry brings every kind of product together in one simple, no-clutter store.</p>
+      <div class="cta"><a href="#products" class="btn dark">Shop products</a><a href="#contact" class="btn soft">Get in touch</a></div>
+    </div>
+    <div class="stage" id="stageWrap">
+      <div class="stage-cube" id="stageCube"><i>New</i><i>Fast</i><i>Trusted</i><i>Simple</i><i>Secure</i><i>Fresh</i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS SECTION ===================== -->
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">All Products</h2>
+        <p class="section-sub">A starter catalog — replace these with your own items in minutes.</p>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty">No products match your search. Try a different word.</p>
+
+    <div class="strip">
+      <div><h4>Any catalog</h4><p>Sell your own products or run a dropshipping catalog — the store doesn't care which.</p></div>
+      <div><h4>Simple checkout</h4><p>Customers enter their details once, then pick a payment method and pay on that provider's own site.</p></div>
+      <div><h4>Orders by email</h4><p>Every confirmed order is sent straight to your inbox, so nothing needs a dashboard login.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT SECTION ===================== -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="panel">
+      <div>
+        <h2>Contact</h2>
+        <p>Questions about an order or a product? Send a message and expect a reply within one business day.</p>
+      </div>
+      <div class="contact-list" id="contactList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TERMS & SERVICES SECTION ===================== -->
+<section class="section" id="terms">
+  <div class="wrap">
+    <div class="terms">
+      <h2 class="section-title" style="margin-bottom:0">Terms &amp; Services</h2>
+      <!-- Replace this text with your own legal terms before going live. -->
+      <h3>Orders</h3>
+      <p>An order is confirmed once you submit your details and complete payment with the provider you choose. You'll receive an email confirming it.</p>
+      <h3>Payments</h3>
+      <p>Payments are completed on the payment provider's own secure website. Productry never sees or stores your card details.</p>
+      <h3>Delivery</h3>
+      <p>Delivery times and fees are shown at checkout. You'll receive tracking details by email once your order ships.</p>
+      <h3>Returns</h3>
+      <p>If an item arrives faulty or not as described, contact us within 14 days and we'll arrange a replacement or refund.</p>
+      <h3>Privacy</h3>
+      <p>Your details are only used to process and deliver your order and to answer your questions.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">© <span id="year"></span> Productry. All rights reserved.</div></footer>
+
+<!-- ===================== CART DRAWER ===================== -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head"><h3>Your cart</h3>
+    <button class="icon-btn" id="drawerClose" aria-label="Close cart"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot">
+    <div class="row"><span>Subtotal</span><span id="cartTotal">$0.00</span></div>
+    <button class="btn dark block" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<!-- ===================== CHECKOUT & THANK YOU ===================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Checkout">
+  <div class="sheet">
+    <button class="icon-btn close" id="modalClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="steps" id="steps"><i></i><i></i><i></i></div>
+
+    <!-- STEP 1: Customer details -->
+    <div class="step on" id="step1">
+      <h2>Your details</h2>
+      <p class="sub">Tell us where to send your order.</p>
+      <form id="orderForm" novalidate>
+        <div class="fields">
+          <div class="field"><label for="f_name">Full name</label><input id="f_name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="f_phone">Phone</label><input id="f_phone" name="phone" type="tel" required autocomplete="tel"></div>
+          <div class="field full"><label for="f_email">Email</label><input id="f_email" name="email" type="email" required autocomplete="email"></div>
+          <div class="field full"><label for="f_addr">Street address</label><input id="f_addr" name="address" required autocomplete="street-address"></div>
+          <div class="field"><label for="f_city">City</label><input id="f_city" name="city" required autocomplete="address-level2"></div>
+          <div class="field"><label for="f_zip">Postal code</label><input id="f_zip" name="postal_code" required autocomplete="postal-code"></div>
+          <div class="field full"><label for="f_note">Order notes (optional)</label><textarea id="f_note" name="notes" rows="2"></textarea></div>
+        </div>
+        <div class="summary" id="summary"></div>
+        <div class="err" id="formErr" role="alert"></div>
+        <button type="submit" class="btn dark block" id="confirmBtn">Confirm Order</button>
+      </form>
+    </div>
+
+    <!-- STEP 2: Payment method (redirects to provider) -->
+    <div class="step" id="step2">
+      <h2>Choose how to pay</h2>
+      <p class="sub">You'll be taken to the provider's official website to pay.</p>
+      <div class="pay" id="payOptions"></div>
+      <p class="safe">Payment is completed on the provider's secure site. We never see your card details.</p>
+    </div>
+
+    <!-- STEP 3: Thank you -->
+    <div class="step" id="step3">
+      <div class="thanks">
+        <svg class="check" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle class="c" cx="50" cy="50" r="46"/><path class="t" d="M30 52l14 14 27-30"/></svg>
+        <h2>Thank you for your order</h2>
+        <p class="sub" style="margin-bottom:0">We've received it and sent the details to our team. A confirmation will arrive by email.</p>
+        <div class="order-id" id="orderId"></div><br>
+        <button class="btn dark" id="doneBtn">Continue shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   CONFIG — EDIT THIS BLOCK TO CUSTOMIZE YOUR STORE
+   Full walkthrough for every field below is in README.md.
+   ===================================================================== */
+const CONFIG = {
+
+  /* ---------- SECTION A: Store settings ---------- */
+  storeName: "Productry",
+  currency: "$",   // symbol shown before prices
+
+  /* Announcement bar text, shown at the very top of the site.
+     Add as many lines as you like; they rotate every 4 seconds.
+     Leave the list empty [] to hide the bar completely. */
+  announcements: [
+    "Welcome to Productry. Fun finds and everyday solutions, all in one place."
+  ],
+
+  /* ---------- SECTION B: Formspree (order emails) ----------
+     Create a free form at formspree.io and paste its endpoint URL here.
+     Until you replace YOUR_FORM_ID the site runs in demo mode
+     (orders are logged to the browser console instead of emailed). */
+  formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID",
+
+  /* ---------- SECTION C: Payment methods ----------
+     Shown after "Confirm Order". Replace each url with your real
+     payment link (PayPal.me, Stripe Payment Link, a dropshipping
+     supplier's checkout, etc). While a url still contains "YOUR",
+     clicking it shows the Thank You screen instead (demo mode). */
+  payments: [
+
+    // >>>>>>>>>> PAYMENT 1 START >>>>>>>>>>
+    { name: "PayPal", icon: "P", note: "Pay with your PayPal account or card", url: "https://www.paypal.com/paypalme/YOURNAME" },
+    // <<<<<<<<<< PAYMENT 1 END <<<<<<<<<<
+
+    // >>>>>>>>>> PAYMENT 2 START >>>>>>>>>>
+    { name: "Stripe", icon: "S", note: "Pay with credit or debit card", url: "https://buy.stripe.com/YOUR_PAYMENT_LINK" },
+    // <<<<<<<<<< PAYMENT 2 END <<<<<<<<<<
+
+    // ===== TO ADD A NEW PAYMENT METHOD: paste it below this line =====
+
+  ],
+
+  /* ---------- SECTION D: Contact details ---------- */
+  contact: {
+    email:   "hello@yourdomain.com",
+    phone:   "+1 000 000 0000",
+    address: "Your street, Your city",
+    hours:   "Mon–Fri, 9:00–17:00"
+  }
+};
+
+/* ---------- SECTION E: Products ----------
+   Change name, price, description, tag and tile color for each one.
+   "art" picks a built-in drawing: box | tag | bag | bolt | leaf | watch.
+   OR add  image:"images/my-photo.jpg"  to use your own photo instead
+   (image always wins over art). Add or remove products freely — the
+   grid reflows automatically, it isn't locked to any fixed count. */
+const PRODUCTS = [
+
+  // >>>>>>>>>> PRODUCT 1 START >>>>>>>>>>
+  { id:1, name:"Wireless Earbuds", price:39.99, tag:"Bestseller", art:"bolt", bg:"#DCE8E4",
+    desc:"Compact true-wireless earbuds with a 20-hour charging case." },
+  // <<<<<<<<<< PRODUCT 1 END <<<<<<<<<<
+
+  // >>>>>>>>>> PRODUCT 2 START >>>>>>>>>>
+  { id:2, name:"Everyday Backpack", price:54.00, tag:"New", art:"bag", bg:"#F6EAC9",
+    desc:"Water-resistant 20L backpack with a padded laptop sleeve." },
+  // <<<<<<<<<< PRODUCT 2 END <<<<<<<<<<
+
+  // >>>>>>>>>> PRODUCT 3 START >>>>>>>>>>
+  { id:3, name:"Minimalist Watch", price:68.50, tag:"Trending", art:"watch", bg:"#F3DCD5",
+    desc:"Slim stainless steel watch with a genuine leather strap." },
+  // <<<<<<<<<< PRODUCT 3 END <<<<<<<<<<
+
+  // >>>>>>>>>> PRODUCT 4 START >>>>>>>>>>
+  { id:4, name:"Skincare Set", price:29.99, tag:"3-piece", art:"leaf", bg:"#DCE6EF",
+    desc:"Cleanser, serum and moisturizer set for daily use." },
+  // <<<<<<<<<< PRODUCT 4 END <<<<<<<<<<
+
+  // >>>>>>>>>> PRODUCT 5 START >>>>>>>>>>
+  { id:5, name:"Ceramic Mug Set", price:22.00, tag:"Set of 2", art:"box", bg:"#DCE8E4",
+    desc:"Hand-glazed ceramic mugs, dishwasher and microwave safe." },
+  // <<<<<<<<<< PRODUCT 5 END <<<<<<<<<<
+
+  // >>>>>>>>>> PRODUCT 6 START >>>>>>>>>>
+  { id:6, name:"Phone Case", price:15.99, tag:"Drop-tested", art:"tag", bg:"#F6EAC9",
+    desc:"Slim protective case with reinforced corners." },
+  // <<<<<<<<<< PRODUCT 6 END <<<<<<<<<<
+
+  // ===== TO ADD A NEW PRODUCT: paste it below this line =====
+
+];
+/* ===================== END OF CONFIG ===================== */
+
+
+/* ---------- Product drawings (inline SVG, no image files needed) ---------- */
+const ART = {
+  box:`<svg viewBox="0 0 120 120" fill="none"><path d="M60 18 L104 38 L104 84 L60 104 L16 84 L16 38 Z" fill="#1F7A6C"/><path d="M60 18 L104 38 L60 58 L16 38 Z" fill="#2B9484"/><path d="M60 58 L104 38 L104 84 L60 104 Z" fill="#155F53"/><path d="M60 58 L16 38 L16 84 L60 104 Z" fill="#1B6E60"/></svg>`,
+  tag:`<svg viewBox="0 0 120 120" fill="none"><path d="M22 22h40l38 38-40 40-38-38z" fill="#E3A93E"/><circle cx="40" cy="40" r="7" fill="#16202A"/></svg>`,
+  bag:`<svg viewBox="0 0 120 120" fill="none"><rect x="26" y="42" width="68" height="56" rx="10" fill="#16202A"/><path d="M42 42v-8a18 18 0 0136 0v8" stroke="#E3A93E" stroke-width="6" fill="none"/><rect x="26" y="58" width="68" height="10" fill="#1F7A6C"/></svg>`,
+  bolt:`<svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="42" fill="#1F7A6C"/><path d="M66 30 L40 66 h16 l-6 26 30-40 h-16 z" fill="#fff"/></svg>`,
+  leaf:`<svg viewBox="0 0 120 120" fill="none"><rect x="34" y="26" width="52" height="72" rx="14" fill="#fff" stroke="#16202A" stroke-width="3"/><path d="M42 42c14 4 20 16 18 34-16-2-24-14-18-34z" fill="#1F7A6C"/></svg>`,
+  watch:`<svg viewBox="0 0 120 120" fill="none"><rect x="46" y="10" width="28" height="18" rx="4" fill="#16202A"/><rect x="46" y="92" width="28" height="18" rx="4" fill="#16202A"/><circle cx="60" cy="60" r="30" fill="#fff" stroke="#16202A" stroke-width="4"/><path d="M60 44v18l12 8" stroke="#16202A" stroke-width="4" stroke-linecap="round"/></svg>`
+};
+
+/* ---------- Helpers ---------- */
+const artOf = p => p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : (ART[p.art]||ART.box);
+const $ = s => document.querySelector(s);
+const money = n => CONFIG.currency + n.toFixed(2);
+const isPlaceholder = v => /YOUR/.test(v);
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("productry_cart")) || []; } catch(e){}
+const saveCart = () => { try{ localStorage.setItem("productry_cart", JSON.stringify(cart)); }catch(e){} };
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>t.classList.remove("on"),2200); }
+
+document.title = CONFIG.storeName;
+
+/* ---------- Intro animation ---------- */
+(function intro(){
+  const word=$("#introWord"); document.body.classList.add("locked");
+  CONFIG.storeName.split("").forEach((c,i)=>{
+    const s=document.createElement("span");
+    s.textContent=c; s.style.animationDelay=(0.6+i*0.06)+"s"; word.appendChild(s);
+  });
+  const end=()=>{ $("#intro").classList.add("hide"); document.body.classList.remove("locked"); setTimeout(()=>document.body.classList.add("loaded"),450); setTimeout(()=>$("#intro").remove(),1200); };
+  setTimeout(end, 3600);
+})();
+
+/* ---------- Render products ---------- */
+function renderProducts(){
+  $("#grid").innerHTML = PRODUCTS.map(p=>`
+    <article class="card" data-id="${p.id}" data-name="${p.name.toLowerCase()} ${p.desc.toLowerCase()}">
+      <div class="thumb" style="background:${p.bg||'#DCE8E4'}">${artOf(p)}<span class="tag">${p.tag}</span></div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p class="desc">${p.desc}</p>
+        <div class="price">${money(p.price)}</div>
+        <div class="actions">
+          <button class="btn soft" data-add="${p.id}">Add to Cart</button>
+          <button class="btn dark" data-buy="${p.id}">Buy Now</button>
+        </div>
+      </div>
+    </article>`).join("");
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add("in"), e.target.dataset.d||0); io.unobserve(e.target);} }),{threshold:.15});
+  document.querySelectorAll(".card").forEach((c,i)=>{ c.dataset.d=i*100; io.observe(c); });
+  attachTilt();
+}
+
+/* Subtle 3D tilt on product cards, following the cursor. Skipped
+   entirely on touch devices and when the visitor prefers less motion. */
+function attachTilt(){
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const touch = matchMedia("(hover: none)").matches;
+  if(reduce || touch) return;
+  document.querySelectorAll(".card").forEach(card=>{
+    card.addEventListener("mousemove", e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+      const rx=(0.5-py)*10, ry=(px-0.5)*12;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    });
+    card.addEventListener("mouseleave", ()=>{ card.style.transform=""; });
+  });
+}
+
+/* Pause the hero product-stage rotation while off-screen, to save cycles */
+(function stageVisibility(){
+  const cube=$("#stageCube"); if(!cube) return;
+  const io=new IntersectionObserver(es=>es.forEach(e=>cube.classList.toggle("paused",!e.isIntersecting)),{threshold:.1});
+  io.observe($("#stageWrap"));
+})();
+
+/* ---------- Cart ---------- */
+function updateCart(){
+  const count=cart.reduce((a,i)=>a+i.qty,0), total=cart.reduce((a,i)=>a+i.qty*PRODUCTS.find(p=>p.id===i.id).price,0);
+  const b=$("#cartCount"); b.textContent=count; b.classList.toggle("on",count>0); b.classList.remove("bump"); void b.offsetWidth; if(count) b.classList.add("bump");
+  $("#cartTotal").textContent=money(total);
+  $("#cartBody").innerHTML = cart.length ? cart.map(i=>{ const p=PRODUCTS.find(x=>x.id===i.id); return `
+    <div class="line-item">
+      <div class="mini" style="background:${p.bg||'#DCE8E4'}">${artOf(p)}</div>
+      <div><h4>${p.name}</h4><div class="qty"><button data-dec="${p.id}" aria-label="Decrease">−</button><span>${i.qty}</span><button data-inc="${p.id}" aria-label="Increase">+</button></div></div>
+      <div style="text-align:right"><b>${money(p.price*i.qty)}</b><br><button class="remove" data-rm="${p.id}">Remove</button></div>
+    </div>`;}).join("") : `<div class="cart-empty">Your cart is empty.<br>Add something you're selling.</div>`;
+  saveCart();
+}
+function addToCart(id){ const it=cart.find(i=>i.id===id); it?it.qty++:cart.push({id,qty:1}); updateCart(); toast("Added to cart"); }
+function openDrawer(o){ $("#drawer").classList.toggle("on",o); $("#overlay").classList.toggle("on",o); document.body.classList.toggle("locked",o); }
+
+/* ---------- Checkout flow ---------- */
+let checkoutItems=[], currentOrder=null;
+const calc = items => items.reduce((a,i)=>a+i.qty*PRODUCTS.find(p=>p.id===i.id).price,0);
+function showStep(n){
+  [1,2,3].forEach(i=>$("#step"+i).classList.toggle("on",i===n));
+  document.querySelectorAll("#steps i").forEach((el,i)=>el.classList.toggle("done",i<n));
+  $(".sheet").scrollTop=0;
+}
+function openCheckout(items){
+  checkoutItems=items;
+  $("#summary").innerHTML = items.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id);return `<div class="row"><span>${p.name} × ${i.qty}</span><span>${money(p.price*i.qty)}</span></div>`}).join("")
+    + `<div class="row total"><span>Total</span><span>${money(calc(items))}</span></div>`;
+  $("#formErr").textContent=""; showStep(1);
+  openDrawer(false); $("#modal").classList.add("on"); document.body.classList.add("locked"); $("#overlay").classList.add("on");
+}
+function closeModal(){ $("#modal").classList.remove("on"); $("#overlay").classList.remove("on"); document.body.classList.remove("locked"); }
+
+$("#orderForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const f=e.target; let ok=true;
+  f.querySelectorAll("[required]").forEach(i=>{ const v=i.value.trim(); const bad=!v||(i.type==="email"&&!/^\S+@\S+\.\S+$/.test(v)); i.classList.toggle("bad",bad); if(bad) ok=false; });
+  if(!ok){ $("#formErr").textContent="Please fill in all required fields with valid details."; return; }
+  $("#formErr").textContent="";
+  const btn=$("#confirmBtn"); btn.disabled=true; btn.textContent="Sending…";
+  const id="PR-"+Date.now().toString(36).toUpperCase();
+  const data=Object.fromEntries(new FormData(f).entries());
+  const itemsText=checkoutItems.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id);return `${p.name} × ${i.qty} = ${money(p.price*i.qty)}`}).join("\n");
+  currentOrder={id,total:calc(checkoutItems)};
+  const payload={ _subject:`New ${CONFIG.storeName} order ${id}`, order_id:id, ...data, items:itemsText, total:money(currentOrder.total) };
+  try{
+    if(!isPlaceholder(CONFIG.formspreeEndpoint)){
+      const r=await fetch(CONFIG.formspreeEndpoint,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(payload)});
+      if(!r.ok) throw new Error("Formspree error");
+    } else { console.info("Demo mode: set CONFIG.formspreeEndpoint to send order emails.", payload); }
+    try{ sessionStorage.setItem("productry_order",JSON.stringify(currentOrder)); }catch(_){}
+    $("#payOptions").innerHTML=CONFIG.payments.map((p,i)=>`<button data-pay="${i}"><span class="pi">${p.icon}</span><span><b>${p.name}</b><small>${p.note}</small></span></button>`).join("");
+    showStep(2);
+  }catch(err){ $("#formErr").textContent="We could not send your order. Check your connection and try again."; }
+  btn.disabled=false; btn.textContent="Confirm Order";
+});
+
+function showThanks(){ $("#orderId").textContent="Order "+(currentOrder?currentOrder.id:""); showStep(3); $("#modal").classList.add("on"); $("#overlay").classList.add("on"); document.body.classList.add("locked"); }
+
+/* ---------- Events ---------- */
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button,a"); if(!t) return;
+  if(t.classList.contains("btn")){ const r=document.createElement("span"),rc=t.getBoundingClientRect(),s=Math.max(rc.width,rc.height); r.className="ripple"; r.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX-rc.left-s/2}px;top:${e.clientY-rc.top-s/2}px`; t.appendChild(r); setTimeout(()=>r.remove(),600); }
+  if(t.dataset.add) addToCart(+t.dataset.add);
+  if(t.dataset.buy) openCheckout([{id:+t.dataset.buy,qty:1}]);
+  if(t.dataset.inc){ cart.find(i=>i.id==t.dataset.inc).qty++; updateCart(); }
+  if(t.dataset.dec){ const it=cart.find(i=>i.id==t.dataset.dec); it.qty--; if(it.qty<1) cart=cart.filter(i=>i!==it); updateCart(); }
+  if(t.dataset.rm){ cart=cart.filter(i=>i.id!=t.dataset.rm); updateCart(); }
+  if(t.dataset.pay!==undefined){
+    const p=CONFIG.payments[+t.dataset.pay];
+    /* {TOTAL} and {ORDERID} inside a payment url are replaced automatically */
+    const url=p.url.replace("{TOTAL}",(currentOrder?currentOrder.total:0).toFixed(2)).replace("{ORDERID}",currentOrder?currentOrder.id:"");
+    if(isPlaceholder(p.url)){ finishOrderIfCart(); showThanks(); }   // demo mode
+    else { finishOrderIfCart(); window.location.href=url; }          // real redirect
+  }
+});
+function finishOrderIfCart(){ if(checkoutItems.length && JSON.stringify(checkoutItems)===JSON.stringify(cart)){ cart=[]; updateCart(); } }
+
+$("#cartBtn").onclick=()=>openDrawer(true);
+$("#drawerClose").onclick=()=>openDrawer(false);
+$("#overlay").onclick=()=>{ openDrawer(false); if($("#modal").classList.contains("on")&&!$("#step3").classList.contains("on")) closeModal(); };
+$("#modalClose").onclick=closeModal;
+$("#doneBtn").onclick=closeModal;
+$("#checkoutBtn").onclick=()=>{ if(!cart.length){ toast("Your cart is empty"); return; } openCheckout(cart.map(i=>({...i}))); };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ openDrawer(false); closeModal(); } });
+
+$("#menuBtn").onclick=()=>$("#links").classList.toggle("on");
+$("#links").addEventListener("click",()=>$("#links").classList.remove("on"));
+
+/* Search */
+$("#searchBtn").onclick=()=>{ const s=$("#search"); s.classList.toggle("open"); if(s.classList.contains("open")) $("#searchInput").focus(); else { $("#searchInput").value=""; filter(""); } };
+$("#searchInput").addEventListener("input",e=>filter(e.target.value));
+function filter(q){ q=q.trim().toLowerCase(); let n=0; document.querySelectorAll(".card").forEach(c=>{ const m=!q||c.dataset.name.includes(q); c.classList.toggle("gone",!m); if(m){n++; c.classList.add("in");} }); $("#empty").style.display=n?"none":"block"; if(q) $("#products").scrollIntoView({behavior:"smooth"}); }
+
+/* ---------- Init ---------- */
+$("#contactList").innerHTML=[["Email",CONFIG.contact.email,"mailto:"+CONFIG.contact.email],["Phone",CONFIG.contact.phone,"tel:"+CONFIG.contact.phone.replace(/\s/g,"")],["Address",CONFIG.contact.address],["Hours",CONFIG.contact.hours]]
+  .map(([k,v,h])=>`<div><small>${k}</small>${h?`<a href="${h}">${v}</a>`:v}</div>`).join("");
+$("#year").textContent=new Date().getFullYear();
+renderProducts(); updateCart();
+(function announce(){
+  const list=CONFIG.announcements||[]; if(!list.length) return;
+  const bar=$("#announce"), txt=$("#announceText"); let i=0;
+  txt.textContent=list[0]; bar.classList.add("on");
+  if(list.length>1) setInterval(()=>{ txt.classList.add("out"); setTimeout(()=>{ i=(i+1)%list.length; txt.textContent=list[i]; txt.classList.remove("out"); },500); },4000);
+})();
+
+/* Returning from a payment provider: set your provider's success/return URL to
+   https://YOURDOMAIN/?thankyou=1 and the Thank You screen appears automatically. */
+if(new URLSearchParams(location.search).get("thankyou")==="1"){
+  try{ currentOrder=JSON.parse(sessionStorage.getItem("productry_order")); }catch(e){}
+  setTimeout(showThanks,3400); history.replaceState(null,"",location.pathname);
+}
+</script>
+</body>
+</html>
